@@ -5,16 +5,16 @@ import type { StorybookConfig } from './types';
 export const rspack: StorybookConfig['rspack'] = async (rspackConfig, options) => {
   if (!hasDocsOrControls(options)) return rspackConfig;
 
-  const typescriptOptions = await options.presets.apply<StorybookConfig['typescript']>(
-    'typescript',
-    {} as any
-  );
+  // const typescriptOptions = await options.presets.apply<StorybookConfig['typescript']>(
+  //   'typescript',
+  //   {} as any
+  // );
 
-  const { reactDocgen } = typescriptOptions || {};
+  // const { reactDocgen } = typescriptOptions || {};
 
-  if (typeof reactDocgen !== 'string') {
-    return rspackConfig;
-  }
+  // if (typeof reactDocgen !== 'string') {
+  //   return rspackConfig;
+  // }
 
   return {
     ...rspackConfig,
@@ -26,14 +26,9 @@ export const rspack: StorybookConfig['rspack'] = async (rspackConfig, options) =
           test: /\.(tsx?|jsx?)$/,
           exclude: /node_modules/,
           use: {
-            loader: require.resolve('babel-loader'),
+            loader: require.resolve('./docgen-loader'),
             options: {
-              /* no need to use preset-typescript or preset-react as rspack can handle it */
-              plugins: [
-                require.resolve('@babel/plugin-syntax-jsx'),
-                [require.resolve('@babel/plugin-syntax-typescript'), { isTSX: true }],
-                require.resolve('babel-plugin-react-docgen'),
-              ],
+              resolveOptions: rspackConfig.resolve,
             },
           },
         },

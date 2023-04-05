@@ -8,7 +8,7 @@ import type {
   TypescriptOptions as TypescriptOptionsBuilder,
 } from '@fy-dev/builder-rspack';
 
-type FrameworkName = '@storybook/react-rspack';
+type FrameworkName = '@fy-dev/react-rspack';
 type BuilderName = '@fy-dev/builder-rspack';
 
 export type FrameworkOptions = ReactOptions & {

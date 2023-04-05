@@ -28,7 +28,7 @@ export const frameworkOptions = async (
   }
   if (typeof config === 'undefined') {
     return {
-      name: wrapForPnP('@storybook/react-rspack') as '@storybook/react-rspack',
+      name: wrapForPnP('@fy-dev/react-rspack') as '@fy-dev/react-rspack',
       options: defaultFrameworkOptions,
     };
   }

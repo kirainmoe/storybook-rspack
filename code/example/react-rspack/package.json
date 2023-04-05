@@ -1,18 +1,19 @@
 {
   "name": "rspack-react-starter",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "dev": "rspack serve",
     "build": "rspack build",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "dev": "rspack serve",
+    "storybook": "storybook dev -p 6006"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@fy-dev/react-rspack": "^7.0.0-rc.12",
     "@rspack/cli": "0.1.1",
     "@storybook/addon-essentials": "^7.0.0-rc.11",
     "@storybook/addon-interactions": "^7.0.0-rc.11",

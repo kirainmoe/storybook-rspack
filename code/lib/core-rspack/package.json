@@ -1,6 +1,6 @@
 {
   "name": "@fy-dev/core-rspack",
-  "version": "7.0.0-rc.11",
+  "version": "7.0.0-rc.12",
   "description": "Storybook framework-agnostic API",
   "keywords": [
     "storybook"

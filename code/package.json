@@ -18,7 +18,8 @@
       "lib/*",
       "ui/*",
       "presets/*",
-      "renderers/*"
+      "renderers/*",
+      "example/*"
     ]
   },
   "scripts": {
