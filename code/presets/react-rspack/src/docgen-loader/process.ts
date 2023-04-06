@@ -1,12 +1,20 @@
-import type { LoaderContext } from '@rspack/core';
 import actualNameHandler from './actualNameHandler';
 
-async function docLoader(this: LoaderContext, source: string, map: string, data: any) {
-  const callback = this.async();
+export default async ({
+  source,
+  map,
+  filename,
+  data,
+}: {
+  source: string;
+  map: string;
+  data: unknown;
+  filename: string;
+}) => {
   const { makeFsImporter, builtinResolvers, defaultHandlers, parse } = await import('react-docgen');
   try {
     const results = parse(source, {
-      filename: this.resourcePath,
+      filename,
       resolver: new builtinResolvers.FindAllDefinitionsResolver(),
       importer: makeFsImporter(),
       handlers: [...defaultHandlers, actualNameHandler],
@@ -23,10 +31,8 @@ async function docLoader(this: LoaderContext, source: string, map: string, data:
       })
       .join(';');
 
-    callback(null, `${source}\n${docgen}`, map, data);
+    return [docgen, map];
   } catch (e) {
-    callback(null, source, map, data);
+    return null;
   }
-}
-
-export default docLoader;
+};

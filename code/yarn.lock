@@ -2751,12 +2751,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fy-dev/builder-rspack@7.0.0-rc.12, @fy-dev/builder-rspack@workspace:lib/builder-rspack":
+"@fy-dev/builder-rspack@7.0.0-rc.14, @fy-dev/builder-rspack@workspace:lib/builder-rspack":
   version: 0.0.0-use.local
   resolution: "@fy-dev/builder-rspack@workspace:lib/builder-rspack"
   dependencies:
     "@babel/core": ^7.12.10
-    "@fy-dev/core-rspack": 7.0.0-rc.12
     "@rspack/core": 0.1.1
     "@rspack/dev-middleware": 0.1.1
     "@rspack/plugin-html": 0.1.1
@@ -2811,27 +2810,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fy-dev/core-rspack@npm:7.0.0-rc.12":
-  version: 7.0.0-rc.12
-  resolution: "@fy-dev/core-rspack@npm:7.0.0-rc.12"
-  dependencies:
-    "@storybook/core-common": 7.0.0-rc.11
-    "@storybook/node-logger": 7.0.0-rc.11
-    "@storybook/types": 7.0.0-rc.11
-    "@types/node": ^16.0.0
-    ts-dedent: ^2.0.0
-  checksum: ba00edcad1cb26c55da1c6434b7b3bb0faacf7cebabf06f609b04c59a0e049646e96878fe99bff01e51d5aaa5ef93bf096a420fc60b53d52dfe7eef45470a5e8
-  languageName: node
-  linkType: hard
-
-"@fy-dev/preset-react-rspack@7.0.0-rc.12, @fy-dev/preset-react-rspack@workspace:presets/react-rspack":
+"@fy-dev/preset-react-rspack@7.0.0-rc.14, @fy-dev/preset-react-rspack@workspace:presets/react-rspack":
   version: 0.0.0-use.local
   resolution: "@fy-dev/preset-react-rspack@workspace:presets/react-rspack"
   dependencies:
     "@babel/plugin-syntax-jsx": ^7.18.6
     "@babel/plugin-syntax-typescript": ^7.20.0
     "@babel/preset-react": ^7.18.6
-    "@fy-dev/builder-rspack": 7.0.0-rc.12
+    "@fy-dev/builder-rspack": 7.0.0-rc.14
     "@rspack/core": 0.1.1
     "@storybook/docs-tools": 7.0.0-rc.11
     "@storybook/node-logger": 7.0.0-rc.11
@@ -2848,6 +2834,7 @@ __metadata:
     react-docgen: 6.0.0-beta.6
     react-refresh: ^0.11.0
     semver: ^7.3.7
+    tinypool: ^0.4.0
     typescript: ~4.9.3
   peerDependencies:
     "@babel/core": ^7.11.5
@@ -2861,12 +2848,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fy-dev/react-rspack@^7.0.0-rc.12, @fy-dev/react-rspack@workspace:frameworks/react-rspack":
+"@fy-dev/react-rspack@^7.0.0-rc.14, @fy-dev/react-rspack@workspace:frameworks/react-rspack":
   version: 0.0.0-use.local
   resolution: "@fy-dev/react-rspack@workspace:frameworks/react-rspack"
   dependencies:
-    "@fy-dev/builder-rspack": 7.0.0-rc.12
-    "@fy-dev/preset-react-rspack": 7.0.0-rc.12
+    "@fy-dev/builder-rspack": 7.0.0-rc.14
+    "@fy-dev/preset-react-rspack": 7.0.0-rc.14
     "@storybook/react": 7.0.0-rc.11
     "@types/node": ^16.0.0
     jest-specific-snapshot: ^7.0.0
@@ -27761,7 +27748,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "rspack-react-starter@workspace:example/react-rspack"
   dependencies:
-    "@fy-dev/react-rspack": ^7.0.0-rc.12
+    "@fy-dev/react-rspack": ^7.0.0-rc.14
     "@rspack/cli": 0.1.1
     "@storybook/addon-essentials": ^7.0.0-rc.11
     "@storybook/addon-interactions": ^7.0.0-rc.11
@@ -29795,6 +29782,13 @@ __metadata:
   version: 1.0.3
   resolution: "tiny-warning@npm:1.0.3"
   checksum: ef8531f581b30342f29670cb41ca248001c6fd7975ce22122bd59b8d62b4fc84ad4207ee7faa95cde982fa3357cd8f4be650142abc22805538c3b1392d7084fa
+  languageName: node
+  linkType: hard
+
+"tinypool@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "tinypool@npm:0.4.0"
+  checksum: 44e8f6aeb02dec10ddded8ce24bf122900c093350e50c33745028e75e849fb6cad70cf86f5874ec5f8ecbe267d920b2646b5b1d20c5f959be070e1629568bb36
   languageName: node
   linkType: hard
 

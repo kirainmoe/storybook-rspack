@@ -1,6 +1,6 @@
 {
   "name": "@fy-dev/preset-react-rspack",
-  "version": "7.0.0-rc.14",
+  "version": "7.0.0-rc.15",
   "description": "Storybook for React: Develop React Component in isolation with Hot Reloading.",
   "keywords": [
     "storybook"
@@ -68,12 +68,13 @@
     "fs-extra": "^11.1.0",
     "react-docgen": "6.0.0-beta.6",
     "react-refresh": "^0.11.0",
-    "semver": "^7.3.7"
+    "semver": "^7.3.7",
+    "tinypool": "^0.4.0"
   },
   "devDependencies": {
     "@babel/plugin-syntax-jsx": "^7.18.6",
     "@babel/preset-react": "^7.18.6",
-    "@fy-dev/builder-rspack": "7.0.0-rc.14",
+    "@fy-dev/builder-rspack": "7.0.0-rc.15",
     "babel-loader": "^9.1.2",
     "typescript": "~4.9.3"
   },
@@ -101,7 +102,8 @@
       "./src/index.ts",
       "./src/framework-preset-react-docs.ts",
       "./src/framework-preset-react.ts",
-      "./src/docgen-loader.ts"
+      "./src/docgen-loader/index.ts",
+      "./src/docgen-loader/process.ts"
     ],
     "platform": "node"
   },

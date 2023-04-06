@@ -26,7 +26,7 @@ export const rspack: StorybookConfig['rspack'] = async (rspackConfig, options) =
           test: /\.(tsx?|jsx?)$/,
           exclude: /node_modules/,
           use: {
-            loader: require.resolve('./docgen-loader'),
+            loader: require.resolve('./docgen-loader/index.js'),
             options: {
               resolveOptions: rspackConfig.resolve,
             },
