@@ -1,9 +1,6 @@
-import type { Configuration, Stats } from '@rspack/core';
-import type {
-  Options,
-  BuilderResult as BuilderResultBase,
-  StorybookConfig,
-} from '@storybook/core-webpack';
+import type { Configuration, RspackOptions } from '@rspack/core';
+
+import type { Options, StorybookConfig as StorybookConfigBase } from '@storybook/types';
 
 import type ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
@@ -19,7 +16,7 @@ export interface TypescriptOptions extends TypeScriptOptionsBase {
   checkOptions?: ConstructorParameters<typeof ForkTsCheckerWebpackPlugin>[0];
 }
 
-export interface StorybookConfigRspack extends Pick<StorybookConfig, 'webpack' | 'webpackFinal'> {
+export interface StorybookConfigRspack extends StorybookConfig {
   /**
    * Modify or return a custom Rspack config after the Storybook's default configuration
    * has run (mostly used by addons).
@@ -36,6 +33,37 @@ export type BuilderOptions = {
   lazyCompilation?: boolean;
 };
 
-export interface BuilderResult extends BuilderResultBase {
-  stats?: Stats;
-}
+export type RulesConfig = any;
+
+export type ModuleConfig = {
+  rules?: RulesConfig[];
+};
+
+export type RspackConfiguration = RspackOptions;
+
+export type ResolveConfig = {
+  extensions?: string[];
+  mainFields?: string[] | undefined;
+  alias?: any;
+};
+
+export type StorybookConfig<TRspackConfiguration = RspackOptions> = StorybookConfigBase & {
+  /**
+   * Modify or return a custom Rspack config after the Storybook's default configuration
+   * has run (mostly used by addons).
+   */
+  rspack?: (
+    config: TRspackConfiguration,
+    options: Options
+  ) => TRspackConfiguration | Promise<TRspackConfiguration>;
+
+  /**
+   * Modify or return a custom Rspack config after every addon has run.
+   */
+  rspackFinal?: (
+    config: TRspackConfiguration,
+    options: Options
+  ) => TRspackConfiguration | Promise<TRspackConfiguration>;
+};
+
+export type { Options, RspackOptions };

@@ -2,7 +2,7 @@ import * as rspackReal from '@rspack/core';
 import { logger } from '@storybook/node-logger';
 import type { Options, CoreConfig } from '@storybook/types';
 import type { Configuration } from '@rspack/core';
-import { loadCustomRspackConfig } from '@fy-dev/core-rspack';
+import { loadCustomRspackConfig } from '../load-custom-rspack-config';
 import { createDefaultRspackConfig } from '../preview/base-rspack.config';
 
 export async function rspack(config: Configuration, options: Options) {

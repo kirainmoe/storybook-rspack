@@ -1,6 +1,6 @@
 {
   "name": "@fy-dev/builder-rspack",
-  "version": "7.0.0-rc.12",
+  "version": "7.0.0-rc.14",
   "description": "Storybook framework-agnostic API",
   "keywords": [
     "storybook"
@@ -58,10 +58,9 @@
   },
   "dependencies": {
     "@babel/core": "^7.12.10",
-    "@fy-dev/core-rspack": "7.0.0-rc.12",
     "@rspack/core": "0.1.1",
     "@rspack/dev-middleware": "0.1.1",
-    "@rspack/plugin-html": "^0.1.1",
+    "@rspack/plugin-html": "0.1.1",
     "@storybook/addons": "7.0.0-rc.11",
     "@storybook/api": "7.0.0-rc.11",
     "@storybook/channel-postmessage": "7.0.0-rc.11",

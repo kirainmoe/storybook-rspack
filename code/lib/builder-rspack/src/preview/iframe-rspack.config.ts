@@ -1,8 +1,10 @@
 import path, { dirname, join, resolve } from 'path';
+
 import type { Configuration } from '@rspack/core';
+import HtmlPlugin from '@rspack/plugin-html';
+
 import fs, { writeFile } from 'fs-extra';
 
-import HtmlPlugin from '@rspack/plugin-html';
 import slash from 'slash';
 
 import type { Options, CoreConfig, DocsOptions, PreviewAnnotation } from '@storybook/types';
@@ -16,7 +18,7 @@ import {
 } from '@storybook/core-common';
 import { dedent } from 'ts-dedent';
 import { promise as glob } from 'glob-promise';
-import { toImportFn } from '@fy-dev/core-rspack';
+import { toImportFn } from '../to-importFn';
 import type { TypescriptOptions } from '../types';
 
 const wrapForPnP = (input: string) => dirname(require.resolve(join(input, 'package.json')));

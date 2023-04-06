@@ -2,14 +2,14 @@
 import { dirname, join } from 'path';
 import { logger } from '@storybook/node-logger';
 
-import type { Options, Preset } from '@fy-dev/core-rspack';
+import type { Options } from '@fy-dev/builder-rspack';
 import type { StorybookConfig, ReactOptions } from './types';
 
 const wrapForPnP = (input: string) => dirname(require.resolve(join(input, 'package.json')));
 
 const applyFastRefresh = async (options: Options) => {
   const isDevelopment = options.configType === 'DEVELOPMENT';
-  const framework = await options.presets.apply<Preset>('framework');
+  const framework = await options.presets.apply('framework');
   const reactOptions = (typeof framework === 'object' ? framework.options : {}) as ReactOptions;
   return isDevelopment && (reactOptions.fastRefresh || process.env.FAST_REFRESH === 'true');
 };

@@ -2,10 +2,8 @@ import type {
   RspackConfiguration as RspackConfigurationBase,
   StorybookConfig as StorybookConfigBase,
   TypescriptOptions as TypescriptOptionsBase,
-} from '@fy-dev/core-rspack';
+} from '@fy-dev/builder-rspack';
 import type { PluginOptions as ReactDocgenTypescriptOptions } from '@storybook/react-docgen-typescript-plugin';
-
-export type { BuilderResult } from '@fy-dev/core-rspack';
 
 export interface ReactOptions {
   fastRefresh?: boolean;
