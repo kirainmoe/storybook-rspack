@@ -40,14 +40,6 @@ export const rspackFinal: StorybookConfig['rspackFinal'] = async (config, option
     reactConfig.runtime = 'classic';
   }
 
-  // This only used for storybook workspace example,
-  // Remove this when loadUserRspackConfig is done
-  config.resolve ??= {};
-  config.resolve.alias = {
-    ...config.resolve.alias,
-    react: require.resolve('react'),
-  };
-
   if (!(await applyFastRefresh(options))) return config;
 
   reactConfig.development = true;
