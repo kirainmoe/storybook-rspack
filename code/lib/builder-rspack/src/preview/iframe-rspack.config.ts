@@ -125,9 +125,7 @@ export default async (
     const configEntryPath = resolve(join(workingDir, 'storybook-config-entry.js'));
     virtualModuleMapping[configEntryPath] = handlebars(
       await readTemplate(
-        require.resolve(
-          '@fy-dev/builder-rspack/templates/virtualModuleModernEntry.js.handlebars'
-        )
+        require.resolve('@fy-dev/builder-rspack/templates/virtualModuleModernEntry.js.handlebars')
       ),
       {
         storiesFilename,

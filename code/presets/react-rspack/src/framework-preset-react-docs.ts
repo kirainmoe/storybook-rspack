@@ -5,16 +5,16 @@ import type { StorybookConfig } from './types';
 export const rspack: StorybookConfig['rspack'] = async (rspackConfig, options) => {
   if (!hasDocsOrControls(options)) return rspackConfig;
 
-  // const typescriptOptions = await options.presets.apply<StorybookConfig['typescript']>(
-  //   'typescript',
-  //   {} as any
-  // );
+  const typescriptOptions = await options.presets.apply<StorybookConfig['typescript']>(
+    'typescript',
+    {} as any
+  );
 
-  // const { reactDocgen } = typescriptOptions || {};
+  const { reactDocgen } = typescriptOptions || {};
 
-  // if (typeof reactDocgen !== 'string') {
-  //   return rspackConfig;
-  // }
+  if (reactDocgen !== 'react-docgen') {
+    return rspackConfig;
+  }
 
   return {
     ...rspackConfig,
