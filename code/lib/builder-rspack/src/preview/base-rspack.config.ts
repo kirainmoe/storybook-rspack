@@ -53,6 +53,14 @@ export async function createDefaultRspackConfig(
           },
         },
         {
+          test: /\.mjs?$/,
+          type: 'javascript',
+          resolve: {
+            // For some compatibility
+            fullySpecified: false,
+          },
+        },
+        {
           test: /\.(mp4|webm|wav|mp3|m4a|aac|oga)(\?.*)?$/,
           type: 'asset',
           parser: {

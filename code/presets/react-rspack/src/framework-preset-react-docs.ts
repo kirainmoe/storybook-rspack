@@ -15,7 +15,7 @@ export const rspack: StorybookConfig['rspack'] = async (rspackConfig, options) =
   const { reactDocgen } = typescriptOptions || {};
 
   if (reactDocgen !== 'react-docgen') {
-    if (!reactDocgen) {
+    if (reactDocgen !== false && reactDocgen !== undefined) {
       logger.warn(
         `Rspack currently only support 'typescript.reactDocgen: react-docgen' for auto docs generation, but you specified ${reactDocgen}`
       );
