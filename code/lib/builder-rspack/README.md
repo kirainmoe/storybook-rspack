@@ -5,7 +5,7 @@ Builder implemented with `rspack`
 ```js
 export default {
   core: {
-    builder: '@fy-dev/builder-rspack',
+    builder: 'storybook-builder-rspack',
   },
 };
 ```

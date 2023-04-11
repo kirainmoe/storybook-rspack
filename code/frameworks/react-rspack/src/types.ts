@@ -1,15 +1,15 @@
 import type {
   ReactOptions,
   StorybookConfig as StorybookConfigBase,
-} from '@fy-dev/preset-react-rspack';
+} from 'storybook-preset-react-rspack';
 import type {
   StorybookConfigRspack,
   BuilderOptions,
   TypescriptOptions as TypescriptOptionsBuilder,
-} from '@fy-dev/builder-rspack';
+} from 'storybook-builder-rspack';
 
-type FrameworkName = '@fy-dev/react-rspack';
-type BuilderName = '@fy-dev/builder-rspack';
+type FrameworkName = 'storybook-react-rspack';
+type BuilderName = 'storybook-builder-rspack';
 
 export type FrameworkOptions = ReactOptions & {
   builder?: BuilderOptions;

@@ -13,7 +13,6 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@fy-dev/react-rspack": "7.0.0-rc.16",
     "@rspack/cli": "0.1.1",
     "@storybook/addon-essentials": "^7.0.0",
     "@storybook/addon-interactions": "^7.0.0",
@@ -25,6 +24,7 @@
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
     "prop-types": "^15.8.1",
-    "storybook": "^7.0.0"
+    "storybook": "^7.0.0",
+    "storybook-react-rspack": "7.0.0-rc.16"
   }
 }

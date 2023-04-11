@@ -2,7 +2,8 @@
 import { dirname, join } from 'path';
 import { logger } from '@storybook/node-logger';
 
-import type { Options } from '@fy-dev/builder-rspack';
+import type { Options } from 'storybook-builder-rspack';
+import type { Compiler } from '@rspack/core';
 import type { StorybookConfig, ReactOptions } from './types';
 
 const wrapForPnP = (input: string) => dirname(require.resolve(join(input, 'package.json')));
@@ -14,7 +15,7 @@ const applyFastRefresh = async (options: Options) => {
   return isDevelopment && (reactOptions.fastRefresh || process.env.FAST_REFRESH === 'true');
 };
 
-const storybookReactDirName = wrapForPnP('@fy-dev/preset-react-rspack');
+const storybookReactDirName = wrapForPnP('storybook-preset-react-rspack');
 // TODO: improve node_modules detection
 const context = storybookReactDirName.includes('node_modules')
   ? join(storybookReactDirName, '../../') // Real life case, already in node_modules
@@ -45,7 +46,21 @@ export const rspackFinal: StorybookConfig['rspackFinal'] = async (config, option
   reactConfig.development = true;
   reactConfig.refresh = true;
 
+  config.plugins ??= [];
+  config.plugins.push(new RefreshEntry());
+
   logger.info('=> Using React fast refresh');
 
   return config;
 };
+
+class RefreshEntry {
+  apply(compiler: Compiler) {
+    const reactRefreshEntryPath = require.resolve('@rspack/dev-client/react-refresh');
+    Object.keys(compiler.options.entry).forEach((key) => {
+      compiler.options.entry[key].import ??= [];
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      compiler.options.entry[key].import!.unshift(reactRefreshEntryPath);
+    });
+  }
+}

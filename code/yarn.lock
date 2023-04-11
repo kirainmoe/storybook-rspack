@@ -2751,130 +2751,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fy-dev/builder-rspack@7.0.0-rc.16, @fy-dev/builder-rspack@workspace:lib/builder-rspack":
-  version: 0.0.0-use.local
-  resolution: "@fy-dev/builder-rspack@workspace:lib/builder-rspack"
-  dependencies:
-    "@babel/core": ^7.12.10
-    "@rspack/core": 0.1.1
-    "@rspack/dev-middleware": 0.1.1
-    "@rspack/plugin-html": 0.1.1
-    "@storybook/addon-docs": 7.0.0
-    "@storybook/addons": 7.0.0
-    "@storybook/api": 7.0.0
-    "@storybook/channel-postmessage": 7.0.0
-    "@storybook/channel-websocket": 7.0.0
-    "@storybook/channels": 7.0.0
-    "@storybook/client-api": 7.0.0
-    "@storybook/client-logger": 7.0.0
-    "@storybook/components": 7.0.0
-    "@storybook/core-common": 7.0.0
-    "@storybook/core-events": 7.0.0
-    "@storybook/global": ^5.0.0
-    "@storybook/manager-api": 7.0.0
-    "@storybook/mdx1-csf": ^1.0.0
-    "@storybook/mdx2-csf": ^1.0.0
-    "@storybook/node-logger": 7.0.0
-    "@storybook/preview": 7.0.0
-    "@storybook/preview-api": 7.0.0
-    "@storybook/router": 7.0.0
-    "@storybook/store": 7.0.0
-    "@storybook/theming": 7.0.0
-    "@types/node": ^16.0.0
-    "@types/pretty-hrtime": ^1.0.0
-    "@types/semver": ^7.3.4
-    "@types/webpack-hot-middleware": ^2
-    "@types/webpack-virtual-modules": ^0.1.1
-    babel-loader: ^9.0.0
-    babel-plugin-named-exports-order: ^0.0.2
-    browser-assert: ^1.2.1
-    css-loader: ^6.7.1
-    express: ^4.17.3
-    fork-ts-checker-webpack-plugin: ^7.2.8
-    fs-extra: ^11.1.0
-    glob-promise: ^6.0.2
-    path-browserify: ^1.0.1
-    pretty-hrtime: ^1.0.3
-    process: ^0.11.10
-    remark-external-links: ^9.0.1
-    remark-slug: ^7.0.1
-    semver: ^7.3.7
-    slash: ^3.0.0
-    style-loader: ^3.3.1
-    ts-dedent: ^2.0.0
-    typescript: ~4.9.3
-    util: ^0.12.4
-    util-deprecate: ^1.0.2
-    webpack-hot-middleware: ^2.25.3
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-  languageName: unknown
-  linkType: soft
-
-"@fy-dev/preset-react-rspack@7.0.0-rc.16, @fy-dev/preset-react-rspack@workspace:presets/react-rspack":
-  version: 0.0.0-use.local
-  resolution: "@fy-dev/preset-react-rspack@workspace:presets/react-rspack"
-  dependencies:
-    "@babel/plugin-syntax-jsx": ^7.18.6
-    "@babel/plugin-syntax-typescript": ^7.20.0
-    "@babel/preset-react": ^7.18.6
-    "@fy-dev/builder-rspack": 7.0.0-rc.16
-    "@rspack/core": 0.1.1
-    "@storybook/docs-tools": 7.0.0
-    "@storybook/node-logger": 7.0.0
-    "@storybook/react": 7.0.0
-    "@storybook/react-docgen-typescript-plugin": 1.0.6--canary.9.cd77847.0
-    "@types/node": ^16.0.0
-    "@types/semver": ^7.3.4
-    ast-types: ^0.14.2
-    babel-loader: ^9.1.2
-    babel-plugin-add-react-displayname: ^0.0.5
-    babel-plugin-react-docgen: ^4.2.1
-    enhanced-resolve: ^5.12.0
-    fs-extra: ^11.1.0
-    react-docgen: 6.0.0-beta.6
-    react-refresh: ^0.11.0
-    semver: ^7.3.7
-    tinypool: ^0.4.0
-    typescript: ~4.9.3
-  peerDependencies:
-    "@babel/core": ^7.11.5
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  peerDependenciesMeta:
-    "@babel/core":
-      optional: true
-    typescript:
-      optional: true
-  languageName: unknown
-  linkType: soft
-
-"@fy-dev/react-rspack@7.0.0-rc.16, @fy-dev/react-rspack@workspace:frameworks/react-rspack":
-  version: 0.0.0-use.local
-  resolution: "@fy-dev/react-rspack@workspace:frameworks/react-rspack"
-  dependencies:
-    "@fy-dev/builder-rspack": 7.0.0-rc.16
-    "@fy-dev/preset-react-rspack": 7.0.0-rc.16
-    "@storybook/react": 7.0.0
-    "@types/node": ^16.0.0
-    jest-specific-snapshot: ^7.0.0
-    typescript: ~4.9.3
-  peerDependencies:
-    "@babel/core": ^7.11.5
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  peerDependenciesMeta:
-    "@babel/core":
-      optional: true
-    typescript:
-      optional: true
-  languageName: unknown
-  linkType: soft
-
 "@gar/promisify@npm:^1.0.1, @gar/promisify@npm:^1.1.3":
   version: 1.1.3
   resolution: "@gar/promisify@npm:1.1.3"
@@ -4971,7 +4847,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pmmmwh/react-refresh-webpack-plugin@npm:^0.5.1, @pmmmwh/react-refresh-webpack-plugin@npm:^0.5.5":
+"@pmmmwh/react-refresh-webpack-plugin@npm:0.5.10, @pmmmwh/react-refresh-webpack-plugin@npm:^0.5.1, @pmmmwh/react-refresh-webpack-plugin@npm:^0.5.5":
   version: 0.5.10
   resolution: "@pmmmwh/react-refresh-webpack-plugin@npm:0.5.10"
   dependencies:
@@ -5099,9 +4975,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rspack/binding-darwin-arm64@npm:0.1.7":
+  version: 0.1.7
+  resolution: "@rspack/binding-darwin-arm64@npm:0.1.7"
+  conditions: os=darwin & cpu=arm64
+  languageName: node
+  linkType: hard
+
 "@rspack/binding-darwin-x64@npm:0.1.1":
   version: 0.1.1
   resolution: "@rspack/binding-darwin-x64@npm:0.1.1"
+  conditions: os=darwin & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@rspack/binding-darwin-x64@npm:0.1.7":
+  version: 0.1.7
+  resolution: "@rspack/binding-darwin-x64@npm:0.1.7"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
@@ -5113,9 +5003,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rspack/binding-linux-arm64-gnu@npm:0.1.7":
+  version: 0.1.7
+  resolution: "@rspack/binding-linux-arm64-gnu@npm:0.1.7"
+  conditions: os=linux & cpu=arm64 & libc=glibc
+  languageName: node
+  linkType: hard
+
 "@rspack/binding-linux-arm64-musl@npm:0.1.1":
   version: 0.1.1
   resolution: "@rspack/binding-linux-arm64-musl@npm:0.1.1"
+  conditions: os=linux & cpu=arm64 & libc=musl
+  languageName: node
+  linkType: hard
+
+"@rspack/binding-linux-arm64-musl@npm:0.1.7":
+  version: 0.1.7
+  resolution: "@rspack/binding-linux-arm64-musl@npm:0.1.7"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
@@ -5127,9 +5031,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rspack/binding-linux-x64-gnu@npm:0.1.7":
+  version: 0.1.7
+  resolution: "@rspack/binding-linux-x64-gnu@npm:0.1.7"
+  conditions: os=linux & cpu=x64 & libc=glibc
+  languageName: node
+  linkType: hard
+
 "@rspack/binding-linux-x64-musl@npm:0.1.1":
   version: 0.1.1
   resolution: "@rspack/binding-linux-x64-musl@npm:0.1.1"
+  conditions: os=linux & cpu=x64 & libc=musl
+  languageName: node
+  linkType: hard
+
+"@rspack/binding-linux-x64-musl@npm:0.1.7":
+  version: 0.1.7
+  resolution: "@rspack/binding-linux-x64-musl@npm:0.1.7"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
@@ -5141,6 +5059,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rspack/binding-win32-arm64-msvc@npm:0.1.7":
+  version: 0.1.7
+  resolution: "@rspack/binding-win32-arm64-msvc@npm:0.1.7"
+  conditions: os=win32 & cpu=arm64
+  languageName: node
+  linkType: hard
+
 "@rspack/binding-win32-ia32-msvc@npm:0.1.1":
   version: 0.1.1
   resolution: "@rspack/binding-win32-ia32-msvc@npm:0.1.1"
@@ -5148,9 +5073,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rspack/binding-win32-ia32-msvc@npm:0.1.7":
+  version: 0.1.7
+  resolution: "@rspack/binding-win32-ia32-msvc@npm:0.1.7"
+  conditions: os=win32 & cpu=ia32
+  languageName: node
+  linkType: hard
+
 "@rspack/binding-win32-x64-msvc@npm:0.1.1":
   version: 0.1.1
   resolution: "@rspack/binding-win32-x64-msvc@npm:0.1.1"
+  conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@rspack/binding-win32-x64-msvc@npm:0.1.7":
+  version: 0.1.7
+  resolution: "@rspack/binding-win32-x64-msvc@npm:0.1.7"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -5188,6 +5127,42 @@ __metadata:
     "@rspack/binding-win32-x64-msvc":
       optional: true
   checksum: 6bdf5ebc094f9d5437c5b4712a82303e5ed18a3b8e054883f7e3cbba4e91e31094aa6024ef9a73f7bfc52f536051701578edc934d72279755d4c5c052683ad75
+  languageName: node
+  linkType: hard
+
+"@rspack/binding@npm:0.1.7":
+  version: 0.1.7
+  resolution: "@rspack/binding@npm:0.1.7"
+  dependencies:
+    "@rspack/binding-darwin-arm64": 0.1.7
+    "@rspack/binding-darwin-x64": 0.1.7
+    "@rspack/binding-linux-arm64-gnu": 0.1.7
+    "@rspack/binding-linux-arm64-musl": 0.1.7
+    "@rspack/binding-linux-x64-gnu": 0.1.7
+    "@rspack/binding-linux-x64-musl": 0.1.7
+    "@rspack/binding-win32-arm64-msvc": 0.1.7
+    "@rspack/binding-win32-ia32-msvc": 0.1.7
+    "@rspack/binding-win32-x64-msvc": 0.1.7
+  dependenciesMeta:
+    "@rspack/binding-darwin-arm64":
+      optional: true
+    "@rspack/binding-darwin-x64":
+      optional: true
+    "@rspack/binding-linux-arm64-gnu":
+      optional: true
+    "@rspack/binding-linux-arm64-musl":
+      optional: true
+    "@rspack/binding-linux-x64-gnu":
+      optional: true
+    "@rspack/binding-linux-x64-musl":
+      optional: true
+    "@rspack/binding-win32-arm64-msvc":
+      optional: true
+    "@rspack/binding-win32-ia32-msvc":
+      optional: true
+    "@rspack/binding-win32-x64-msvc":
+      optional: true
+  checksum: 19c2709d50185da4a2ba2bad8875b80d1bf96895ee8162e1aa492b269ec5a5d0b168f1393b07bf92ce1e90468bfdb4456967df64d81ed891ce4fcb065ddef86a
   languageName: node
   linkType: hard
 
@@ -5232,6 +5207,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rspack/core@npm:0.1.7":
+  version: 0.1.7
+  resolution: "@rspack/core@npm:0.1.7"
+  dependencies:
+    "@rspack/binding": 0.1.7
+    "@rspack/dev-client": 0.1.7
+    "@swc/helpers": 0.4.13
+    browserslist: ^4.21.3
+    enhanced-resolve: 5.12.0
+    graceful-fs: 4.2.10
+    neo-async: 2.6.2
+    react-refresh: 0.14.0
+    schema-utils: ^4.0.0
+    tapable: 2.2.1
+    watchpack: ^2.4.0
+    webpack-sources: 3.2.3
+  checksum: 4c9b971957186a46835b568c4c1b3a8dd30693ec599121fd3965e34ee3cf992a1260033873c8176d83f9d7d4db8053d4c73cc714d090f348cc8c142f9a71bced
+  languageName: node
+  linkType: hard
+
 "@rspack/dev-client@npm:0.1.1":
   version: 0.1.1
   resolution: "@rspack/dev-client@npm:0.1.1"
@@ -5250,6 +5245,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rspack/dev-client@npm:0.1.7":
+  version: 0.1.7
+  resolution: "@rspack/dev-client@npm:0.1.7"
+  dependencies:
+    "@pmmmwh/react-refresh-webpack-plugin": 0.5.10
+    events: 3.3.0
+    webpack: 5.74.0
+    webpack-dev-server: 4.11.1
+    ws: 8.8.1
+  peerDependencies:
+    react-refresh: ">=0.10.0 <1.0.0"
+  peerDependenciesMeta:
+    react-refresh:
+      optional: true
+  checksum: 53477fa0bec37df65b7dd870330c58ba7ac9b63e12fba1929a785d490e187a45c0565d38375b8ec94f5eea4b039079756ad146b077525ce1f03a1bf1da987600
+  languageName: node
+  linkType: hard
+
 "@rspack/dev-middleware@npm:0.1.1":
   version: 0.1.1
   resolution: "@rspack/dev-middleware@npm:0.1.1"
@@ -5258,6 +5271,17 @@ __metadata:
     mime-types: 2.1.35
     webpack-dev-middleware: 6.0.0
   checksum: cd6b9b32889fc4aa373335d11e98f48d110dad1875542db744b8f5dbb48c2a7e0daeb5dc19f5d62a443a330640cf46eaaa37ee4284caa0a0c4d15b9379b35846
+  languageName: node
+  linkType: hard
+
+"@rspack/dev-middleware@npm:0.1.7":
+  version: 0.1.7
+  resolution: "@rspack/dev-middleware@npm:0.1.7"
+  dependencies:
+    "@rspack/core": 0.1.7
+    mime-types: 2.1.35
+    webpack-dev-middleware: 6.0.2
+  checksum: efb68242577c6e32c48ff052c66d6b9c35fe6299ed01f11244b23cc4ab57cb547d455d0f2feaecd5ec5368acbe13f13d6382c350733b8b11dc7196496bc019af
   languageName: node
   linkType: hard
 
@@ -5280,17 +5304,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rspack/plugin-html@npm:0.1.1":
-  version: 0.1.1
-  resolution: "@rspack/plugin-html@npm:0.1.1"
+"@rspack/plugin-html@npm:0.1.7":
+  version: 0.1.7
+  resolution: "@rspack/plugin-html@npm:0.1.7"
   dependencies:
-    "@rspack/core": 0.1.1
+    "@rspack/core": 0.1.7
     "@types/html-minifier-terser": 7.0.0
     html-minifier-terser: 7.0.0
     lodash.template: ^4.5.0
     parse5: 7.1.1
     tapable: 2.2.1
-  checksum: f255df16a9c59f4057d6afdd6b58d517e134e63998abac7145ecd4118ed75473c521da4cc6d5c0444dbbb906fd77c6f39b38bec30501ae30a9fdb0e816046e43
+  checksum: ecd9207fb196ffb11b6cbb194c0a27d9c18cb2f469f171f3f04bd406b9b57cdf6ed79bb05d03dc5e85603b5d26b61634cf54b747817e19199e28b63ff3b6f64a
   languageName: node
   linkType: hard
 
@@ -27492,7 +27516,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "rspack-react-starter@workspace:example/react-rspack"
   dependencies:
-    "@fy-dev/react-rspack": 7.0.0-rc.16
     "@rspack/cli": 0.1.1
     "@storybook/addon-essentials": ^7.0.0
     "@storybook/addon-interactions": ^7.0.0
@@ -27507,6 +27530,7 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
     storybook: ^7.0.0
+    storybook-react-rspack: 7.0.0-rc.16
   languageName: unknown
   linkType: soft
 
@@ -28700,6 +28724,131 @@ __metadata:
   checksum: 2f27c3eaa7207b81410e170e7c41379816d22c1566308a9d97fbf853c4facff531fcb2a85f085c7503c578736570972f747c26018ebeaba7d1341fb82a7b6d52
   languageName: node
   linkType: hard
+
+"storybook-builder-rspack@7.0.0-rc.16, storybook-builder-rspack@workspace:lib/builder-rspack":
+  version: 0.0.0-use.local
+  resolution: "storybook-builder-rspack@workspace:lib/builder-rspack"
+  dependencies:
+    "@babel/core": ^7.12.10
+    "@rspack/core": 0.1.7
+    "@rspack/dev-middleware": 0.1.7
+    "@rspack/plugin-html": 0.1.7
+    "@storybook/addon-docs": 7.0.0
+    "@storybook/addons": 7.0.0
+    "@storybook/api": 7.0.0
+    "@storybook/channel-postmessage": 7.0.0
+    "@storybook/channel-websocket": 7.0.0
+    "@storybook/channels": 7.0.0
+    "@storybook/client-api": 7.0.0
+    "@storybook/client-logger": 7.0.0
+    "@storybook/components": 7.0.0
+    "@storybook/core-common": 7.0.0
+    "@storybook/core-events": 7.0.0
+    "@storybook/global": ^5.0.0
+    "@storybook/manager-api": 7.0.0
+    "@storybook/mdx1-csf": ^1.0.0
+    "@storybook/mdx2-csf": ^1.0.0
+    "@storybook/node-logger": 7.0.0
+    "@storybook/preview": 7.0.0
+    "@storybook/preview-api": 7.0.0
+    "@storybook/router": 7.0.0
+    "@storybook/store": 7.0.0
+    "@storybook/theming": 7.0.0
+    "@types/node": ^16.0.0
+    "@types/pretty-hrtime": ^1.0.0
+    "@types/semver": ^7.3.4
+    "@types/webpack-hot-middleware": ^2
+    "@types/webpack-virtual-modules": ^0.1.1
+    babel-loader: ^9.0.0
+    babel-plugin-named-exports-order: ^0.0.2
+    browser-assert: ^1.2.1
+    css-loader: ^6.7.1
+    express: ^4.17.3
+    fork-ts-checker-webpack-plugin: ^7.2.8
+    fs-extra: ^11.1.0
+    glob-promise: ^6.0.2
+    path-browserify: ^1.0.1
+    pretty-hrtime: ^1.0.3
+    process: ^0.11.10
+    remark-external-links: ^9.0.1
+    remark-slug: ^7.0.1
+    semver: ^7.3.7
+    slash: ^3.0.0
+    style-loader: ^3.3.1
+    ts-dedent: ^2.0.0
+    typescript: ~4.9.3
+    util: ^0.12.4
+    util-deprecate: ^1.0.2
+    webpack-hot-middleware: ^2.25.3
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  languageName: unknown
+  linkType: soft
+
+"storybook-preset-react-rspack@7.0.0-rc.16, storybook-preset-react-rspack@workspace:presets/react-rspack":
+  version: 0.0.0-use.local
+  resolution: "storybook-preset-react-rspack@workspace:presets/react-rspack"
+  dependencies:
+    "@babel/plugin-syntax-jsx": ^7.18.6
+    "@babel/plugin-syntax-typescript": ^7.20.0
+    "@babel/preset-react": ^7.18.6
+    "@rspack/core": 0.1.7
+    "@rspack/dev-client": 0.1.7
+    "@storybook/docs-tools": 7.0.0
+    "@storybook/node-logger": 7.0.0
+    "@storybook/react": 7.0.0
+    "@storybook/react-docgen-typescript-plugin": 1.0.6--canary.9.cd77847.0
+    "@types/node": ^16.0.0
+    "@types/semver": ^7.3.4
+    ast-types: ^0.14.2
+    babel-loader: ^9.1.2
+    babel-plugin-add-react-displayname: ^0.0.5
+    babel-plugin-react-docgen: ^4.2.1
+    enhanced-resolve: ^5.12.0
+    fs-extra: ^11.1.0
+    react-docgen: 6.0.0-beta.6
+    react-refresh: ^0.11.0
+    semver: ^7.3.7
+    storybook-builder-rspack: 7.0.0-rc.16
+    tinypool: ^0.4.0
+    typescript: ~4.9.3
+  peerDependencies:
+    "@babel/core": ^7.11.5
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    "@babel/core":
+      optional: true
+    typescript:
+      optional: true
+  languageName: unknown
+  linkType: soft
+
+"storybook-react-rspack@7.0.0-rc.16, storybook-react-rspack@workspace:frameworks/react-rspack":
+  version: 0.0.0-use.local
+  resolution: "storybook-react-rspack@workspace:frameworks/react-rspack"
+  dependencies:
+    "@storybook/react": 7.0.0
+    "@types/node": ^16.0.0
+    jest-specific-snapshot: ^7.0.0
+    storybook-builder-rspack: 7.0.0-rc.16
+    storybook-preset-react-rspack: 7.0.0-rc.16
+    typescript: ~4.9.3
+  peerDependencies:
+    "@babel/core": ^7.11.5
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    "@babel/core":
+      optional: true
+    typescript:
+      optional: true
+  languageName: unknown
+  linkType: soft
 
 "storybook@^7.0.0, storybook@workspace:lib/cli-storybook":
   version: 0.0.0-use.local
@@ -31555,7 +31704,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-dev-middleware@npm:*":
+"webpack-dev-middleware@npm:*, webpack-dev-middleware@npm:6.0.2":
   version: 6.0.2
   resolution: "webpack-dev-middleware@npm:6.0.2"
   dependencies:

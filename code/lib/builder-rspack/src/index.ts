@@ -162,6 +162,10 @@ const starter: StarterFunction = async function* starterGeneratorFn({
   }
 
   if (stats.hasErrors()) {
+    const { errors } = stats.toJson();
+    (errors || []).forEach((err) => {
+      logger.error(err.formatted);
+    });
     // eslint-disable-next-line @typescript-eslint/no-throw-literal
     throw stats.toJson().errors;
   }
@@ -223,14 +227,12 @@ const builder: BuilderFunction = async function* builderGeneratorFn({ startTime,
                 }
           );
 
-          errors.forEach((e) => logger.error(e.message));
-          warnings.forEach((e) => logger.error(e.message));
+          errors.forEach((e) => logger.error(e.formatted));
+          warnings.forEach((e) => logger.error(e.formatted));
 
-          compiler.close(() =>
-            options.debugRspack
-              ? fail(stats)
-              : fail(new Error('=> Rspack failed, learn more with --debug-rspack'))
-          );
+          compiler.close(() => {
+            return fail(new Error('=> Rspack failed'));
+          });
 
           return;
         }

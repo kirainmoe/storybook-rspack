@@ -7,15 +7,18 @@ const config = {
     '@storybook/addon-interactions',
   ],
   framework: {
-    name: '@fy-dev/react-rspack',
+    name: 'storybook-react-rspack',
     // name: '@storybook/react-webpack5',
-    options: {},
+    options: {
+      fastRefresh: true,
+    },
   },
   docs: {
     autodocs: 'tag',
   },
   typescript: {
     reactDocgen: 'react-docgen',
+    // reactDocgen: true,
   },
 };
 export default config;

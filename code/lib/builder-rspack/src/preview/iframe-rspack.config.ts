@@ -127,7 +127,7 @@ export default async (
     const configEntryPath = resolve(join(workingDir, 'storybook-config-entry.js'));
     virtualModuleMapping[configEntryPath] = handlebars(
       await readTemplate(
-        require.resolve('@fy-dev/builder-rspack/templates/virtualModuleModernEntry.js.handlebars')
+        require.resolve('storybook-builder-rspack/templates/virtualModuleModernEntry.js.handlebars')
       ),
       {
         storiesFilename,
@@ -160,7 +160,11 @@ export default async (
   }
 
   if (!isProd) {
-    entries.push('webpack-hot-middleware/client?path=/__webpack_hmr');
+    entries.push(
+      `${require.resolve('webpack-hot-middleware/client')}?reload=true&quiet=false&noInfo=${
+        options.quiet
+      }`
+    );
   }
 
   return {

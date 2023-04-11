@@ -7,7 +7,7 @@ import type { FrameworkOptions, StorybookConfig } from './types';
 const wrapForPnP = (input: string) => dirname(require.resolve(join(input, 'package.json')));
 
 export const addons: PresetProperty<'addons', StorybookConfig> = [
-  wrapForPnP('@fy-dev/preset-react-rspack'),
+  wrapForPnP('storybook-preset-react-rspack'),
 ];
 
 const defaultFrameworkOptions: FrameworkOptions = {
@@ -28,7 +28,7 @@ export const frameworkOptions = async (
   }
   if (typeof config === 'undefined') {
     return {
-      name: wrapForPnP('@fy-dev/react-rspack') as '@fy-dev/react-rspack',
+      name: wrapForPnP('storybook-react-rspack') as 'storybook-react-rspack',
       options: defaultFrameworkOptions,
     };
   }
@@ -48,7 +48,7 @@ export const core: PresetProperty<'core', StorybookConfig> = async (config, opti
   return {
     ...config,
     builder: {
-      name: wrapForPnP('@fy-dev/builder-rspack') as '@fy-dev/builder-rspack',
+      name: wrapForPnP('storybook-builder-rspack') as 'storybook-builder-rspack',
       options: typeof framework === 'string' ? {} : framework.options.builder || {},
     },
     renderer: wrapForPnP('@storybook/react'),

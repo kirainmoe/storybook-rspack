@@ -1,5 +1,7 @@
 import { hasDocsOrControls } from '@storybook/docs-tools';
 
+import { logger } from '@storybook/node-logger';
+
 import type { StorybookConfig } from './types';
 
 export const rspack: StorybookConfig['rspack'] = async (rspackConfig, options) => {
@@ -13,6 +15,11 @@ export const rspack: StorybookConfig['rspack'] = async (rspackConfig, options) =
   const { reactDocgen } = typescriptOptions || {};
 
   if (reactDocgen !== 'react-docgen') {
+    if (!reactDocgen) {
+      logger.warn(
+        `Rspack currently only support 'typescript.reactDocgen: react-docgen' for auto docs generation, but you specified ${reactDocgen}`
+      );
+    }
     return rspackConfig;
   }
 
