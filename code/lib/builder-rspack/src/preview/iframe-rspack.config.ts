@@ -2,12 +2,19 @@ import path, { dirname, join, resolve } from 'path';
 
 import type { Configuration } from '@rspack/core';
 import HtmlPlugin from '@rspack/plugin-html';
+import { watch } from 'chokidar';
 
 import fs, { writeFile } from 'fs-extra';
 
 import slash from 'slash';
 
-import type { Options, CoreConfig, DocsOptions, PreviewAnnotation } from '@storybook/types';
+import type {
+  Options,
+  CoreConfig,
+  DocsOptions,
+  PreviewAnnotation,
+  StoriesEntry,
+} from '@storybook/types';
 import { globals } from '@storybook/preview/globals';
 import {
   stringifyProcessEnvs,
@@ -18,6 +25,7 @@ import {
 } from '@storybook/core-common';
 import { dedent } from 'ts-dedent';
 import { promise as glob } from 'glob-promise';
+import { minimatch } from 'minimatch';
 import { toImportFn } from '../to-importFn';
 import type { TypescriptOptions } from '../types';
 
@@ -44,10 +52,16 @@ const storybookPaths: Record<string, string> = {
   [`@storybook/api`]: wrapForPnP(`@storybook/manager-api`),
 };
 
-export async function listStories(options: Options) {
+const NODE_MODULES_WITHOUT_TEMP_RE = /node_modules\/(?!.*\.rspack-virtual-module\/)[^/]+/;
+const STORIES_FILENAME = 'storybook-stories.js';
+const VIRTUAL_MODULE_BASE = '.rspack-virtual-module';
+const CWD = process.cwd();
+const STORIES_PATH = resolve(join(CWD, STORIES_FILENAME));
+
+export async function listStories(matchers: StoriesEntry[], options: Options) {
   return (
     await Promise.all(
-      normalizeStories(await options.presets.apply('stories', [], options), {
+      normalizeStories(matchers, {
         configDir: options.configDir,
         workingDir: options.configDir,
       }).map(({ directory, files }) => {
@@ -60,6 +74,83 @@ export async function listStories(options: Options) {
       })
     )
   ).reduce((carry, stories) => carry.concat(stories), []);
+}
+
+/**
+ * Storybook scans all stories in the folder and place them in one module.
+ * We need to detect new stories ourself, and regenerate new entry for that
+ * story.
+ *
+ * When `require.context` is usable, we can use that instead.
+ */
+function watchStories(
+  options: Options,
+  storiesEntry: StoriesEntry[],
+  cwd: string,
+  writeModule: (p: string, content: string) => void
+) {
+  const matchers = normalizeStories(storiesEntry, {
+    configDir: options.configDir,
+    workingDir: options.configDir,
+  }).map(({ directory, files }) => {
+    const pattern = path.join(directory, files);
+    const absolutePattern = path.isAbsolute(pattern)
+      ? pattern
+      : path.join(options.configDir, pattern);
+
+    return absolutePattern;
+  });
+
+  const watcher = watch(cwd, {
+    cwd,
+    ignored: NODE_MODULES_WITHOUT_TEMP_RE,
+    ignoreInitial: true,
+  });
+
+  async function regenerate(p: string) {
+    if (matchers.some((entry) => minimatch(join(cwd, p), entry))) {
+      const stories = await listStories(matchers, options);
+      const newStories = await toImportFn(stories);
+      writeModule(STORIES_PATH, newStories);
+    }
+  }
+
+  watcher.on('add', regenerate);
+  watcher.on('unlink', regenerate);
+
+  return watcher;
+}
+
+async function virtualModule(
+  virtualModuleMap: Record<string, string>,
+  cwd: string
+): Promise<{
+  alias: Record<string, string>;
+  writeModule(p: string, content: string): void;
+}> {
+  // TODO: is there a better idea for this temp folder ?
+  const tempDir = path.join(cwd, 'node_modules', VIRTUAL_MODULE_BASE);
+  fs.ensureDirSync(tempDir);
+  const alias: Record<string, string> = {};
+
+  await Promise.all(
+    Reflect.ownKeys(virtualModuleMap).map((k) => {
+      const virtualPath = k as string;
+      const relativePath = path.relative(cwd, virtualPath);
+      const realPath = path.join(tempDir, relativePath);
+      alias[virtualPath] = realPath;
+      return writeFile(realPath, virtualModuleMap[virtualPath]);
+    })
+  );
+
+  return {
+    writeModule(virtualPath: string, content: string) {
+      const relativePath = path.relative(cwd, virtualPath);
+      const realPath = path.join(tempDir, relativePath);
+      fs.writeFileSync(realPath, content);
+    },
+    alias,
+  };
 }
 
 export default async (
@@ -76,7 +167,6 @@ export default async (
   } = options;
 
   const isProd = configType === 'PRODUCTION';
-  const workingDir = process.cwd();
 
   const [
     coreOptions,
@@ -100,7 +190,9 @@ export default async (
     presets.apply<string[]>('entries', []),
   ]);
 
-  const stories = await listStories(options);
+  const storiesMatchers = await options.presets.apply('stories', [], options);
+
+  const stories = await listStories(storiesMatchers, options);
 
   const previewAnnotations = [
     ...(await presets.apply<PreviewAnnotation[]>('previewAnnotations', [], options)).map(
@@ -112,7 +204,7 @@ export default async (
         if (typeof entry === 'object') {
           return entry.absolute;
         }
-        return path.resolve(process.cwd(), slash(entry));
+        return path.resolve(CWD, slash(entry));
       }
     ),
     loadPreviewOrConfigFile(options),
@@ -120,17 +212,14 @@ export default async (
 
   const virtualModuleMapping: Record<string, string> = {};
   if (features?.storyStoreV7) {
-    const storiesFilename = 'storybook-stories.js';
-    const storiesPath = resolve(join(workingDir, storiesFilename));
-
-    virtualModuleMapping[storiesPath] = await toImportFn(stories);
-    const configEntryPath = resolve(join(workingDir, 'storybook-config-entry.js'));
+    virtualModuleMapping[STORIES_PATH] = await toImportFn(stories);
+    const configEntryPath = resolve(join(CWD, 'storybook-config-entry.js'));
     virtualModuleMapping[configEntryPath] = handlebars(
       await readTemplate(
         require.resolve('storybook-builder-rspack/templates/virtualModuleModernEntry.js.handlebars')
       ),
       {
-        storiesFilename,
+        storiesFilename: STORIES_FILENAME,
         previewAnnotations,
       }
       // We need to double escape `\` for webpack. We may have some in windows paths
@@ -140,7 +229,7 @@ export default async (
     throw new Error('Rspack only apply to store V7 for now');
   }
 
-  const alias = await hackVirtualModule(virtualModuleMapping, workingDir);
+  const { alias, writeModule } = await virtualModule(virtualModuleMapping, CWD);
 
   // TODO: lazyCompilation
   // const lazyCompilationConfig =
@@ -160,6 +249,8 @@ export default async (
   }
 
   if (!isProd) {
+    watchStories(options, storiesMatchers, CWD, writeModule);
+
     entries.push(
       `${require.resolve('webpack-hot-middleware/client')}?reload=true&quiet=false&noInfo=${
         options.quiet
@@ -173,7 +264,7 @@ export default async (
     devtool: 'cheap-module-source-map',
     entry: entries,
     output: {
-      path: resolve(process.cwd(), outputDir),
+      path: resolve(CWD, outputDir),
       filename: isProd ? '[name].[contenthash:8].iframe.bundle.js' : '[name].iframe.bundle.js',
       publicPath: '',
     },
@@ -181,7 +272,7 @@ export default async (
       preset: 'none',
     },
     watchOptions: {
-      ignored: /node_modules/,
+      ignored: NODE_MODULES_WITHOUT_TEMP_RE,
     },
     externals: globals,
     builtins: {
@@ -196,6 +287,16 @@ export default async (
         {
           test: /\.md$/,
           type: 'asset/source',
+        },
+        {
+          test: /\.m?js$/,
+          type: 'javascript/auto',
+        },
+        {
+          test: /\.m?js$/,
+          resolve: {
+            fullySpecified: false,
+          },
         },
       ],
     },
@@ -251,26 +352,3 @@ export default async (
     ],
   };
 };
-
-//
-async function hackVirtualModule(
-  virtualModuleMap: Record<string, string>,
-  cwd: string
-): Promise<Record<string, string>> {
-  // TODO: is there a better idea for this temp folder ?
-  const tempDir = path.join(cwd, 'node_modules/.temp');
-  fs.ensureDirSync(tempDir);
-  const alias: Record<string, string> = {};
-
-  await Promise.all(
-    Reflect.ownKeys(virtualModuleMap).map((k) => {
-      const virtualPath = k as string;
-      const relativePath = path.relative(cwd, virtualPath);
-      const realPath = path.join(tempDir, relativePath);
-      alias[virtualPath] = realPath;
-      return writeFile(realPath, virtualModuleMap[virtualPath]);
-    })
-  );
-
-  return alias;
-}
