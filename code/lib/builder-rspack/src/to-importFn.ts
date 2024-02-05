@@ -1,6 +1,7 @@
 import { logger } from '@storybook/node-logger';
 
 import path from 'path';
+import slash from 'slash';
 
 /**
  * Paths get passed either with no leading './' - e.g. `src/Foo.stories.js`,
@@ -26,7 +27,7 @@ export async function toImportFn(stories: string[]) {
       logger.warn(`Cannot process ${ext} file with storyStoreV7: ${relativePath}`);
     }
 
-    return `  '${toImportPath(relativePath)}': async () => import('${file}')`;
+    return `  '${toImportPath(slash(relativePath))}': async () => import('${file}')`;
   });
 
   return `
